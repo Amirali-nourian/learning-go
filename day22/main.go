@@ -196,7 +196,7 @@ func main() {
 
 }
 */
-
+/*
 package main
 
 import (
@@ -248,8 +248,9 @@ func main() {
 		fmt.Println(string(buffer[:n]))
 	}
 }
+*/
 
-/*package main
+package main
 
 import (
 	"bytes"
@@ -268,4 +269,3 @@ func main() {
 	io.WriteString(&buff, "\nEnd of Chapter 8")
 	fmt.Println(buff.String())
 }
-*/
