@@ -81,3 +81,5 @@ func maping_test() {
 	fmt.Println("map cleared=", ages)
 
 }
+
+
