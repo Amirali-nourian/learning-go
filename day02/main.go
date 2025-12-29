@@ -103,3 +103,5 @@ func naked_return(a, b int) (result int) {
 	result = ((a + b) * 2) * 5
 	return
 }
+
+
