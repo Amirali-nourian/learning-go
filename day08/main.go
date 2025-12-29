@@ -103,3 +103,5 @@ func mul(numbers ...float64) float64 {
 	}
 	return total
 }
+
+
