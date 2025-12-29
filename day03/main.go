@@ -124,3 +124,5 @@ B:
 func function_syntax() {
 	fmt.Println(`functionName(parameter1 type, parameter2 type) returnType`)
 }
+
+
