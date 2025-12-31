@@ -218,3 +218,5 @@ func main() {
 	fmt.Println(separator)
 }
 
+
+// force update commit message
