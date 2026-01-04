@@ -1,0 +1,3 @@
+APP_NAME=LearningGo
+DEBUG=true
+PORT=8080
