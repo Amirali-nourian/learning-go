@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>کارنامه دانش‌آموز</title>
+    <style>
+        body { font-family: Tahoma, sans-serif; padding: 20px; }
+        table { border-collapse: collapse; width: 50%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+        .fail { color: red; font-weight: bold; }
+        .pass { color: green; }
+    </style>
+</head>
+<body>
+
+    <h1>کارنامه نهایی: {{ .Name }}</h1>
+
+    <table>
+        <tr>
+            <th>نمره</th>
+            <th>وضعیت</th>
+        </tr>
+        
+        {{ range .Scores }}
+        <tr>
+            {{ if lt . 10 }}
+                <td class="fail">{{ . }}</td>
+                <td class="fail">مردود</td>
+            {{ else }}
+                <td class="pass">{{ . }}</td>
+                <td class="pass">قبول</td>
+            {{ end }}
+        </tr>
+        {{ end }}
+        </table>
+
+</body>
+</html>

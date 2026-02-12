@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ .Title }}</title>
+</head>
+<body>
+    <h1>خوش آمدید، {{ .User }}!</h1>
+    <p>وضعیت حساب شما: 
+        {{ if .IsActive }} 
+            <span style="color:green">فعال</span> 
+        {{ else }} 
+            <span style="color:red">غیرفعال</span> 
+        {{ end }}
+    </p>
+</body>
+</html>
