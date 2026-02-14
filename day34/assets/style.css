@@ -1,0 +1,237 @@
+/* ===== reset & base ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* حذف برچسب‌های فاصله‌گذار قدیمی */
+br {
+  display: none;
+}
+
+/* تنظیمات کلی صفحه */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #f6f9fc 0%, #e6f0f5 100%);
+  font-family: 'Vazir', 'Tahoma', 'Arial', sans-serif;
+  direction: rtl;
+  padding: 1rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* استایل عنوان */
+h2 {
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: #1e3c5c;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 20, 30, 0.1);
+  animation: fadeInDown 0.8s ease-out;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: linear-gradient(90deg, #3498db, #2c3e50);
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* ===== فرم ===== */
+form {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 28px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 
+    0 25px 45px -12px rgba(0, 40, 60, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  animation: fadeInUp 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: box-shadow 0.4s, transform 0.3s;
+}
+
+form:hover {
+  box-shadow: 0 30px 55px -10px rgba(20, 80, 120, 0.4);
+}
+
+/* لیبل‌ها */
+label {
+  display: block;
+  font-weight: 600;
+  color: #1e3c5c;
+  margin-bottom: 0.35rem;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+  transition: color 0.3s;
+}
+
+/* فیلدهای ورودی */
+input,
+textarea {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  margin-bottom: 1.8rem; /* جایگزین <br>‌ها */
+  border: 2px solid rgba(30, 60, 92, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.9);
+  font-family: inherit;
+  font-size: 1rem;
+  color: #1e3c5c;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0, 20, 30, 0.02);
+  resize: vertical;
+}
+
+/* افکت فوکوس */
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  background: #ffffff;
+  box-shadow: 
+    0 10px 20px -8px rgba(52, 152, 219, 0.4),
+    inset 0 0 0 2px rgba(52, 152, 219, 0.2);
+  transform: scale(1.02);
+}
+
+/* هاور ملایم */
+input:hover,
+textarea:hover {
+  border-color: #5faee3;
+  background: #ffffff;
+}
+
+/* ===== دکمه با موج قرمز ===== */
+button {
+  background: linear-gradient(135deg, #2c3e50, #1e3c5c);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border-radius: 40px;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 0 12px 25px -8px #1e3c5c80;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  letter-spacing: 1px;
+  margin-top: 0.8rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 1; /* ایجاد بستر stacking برای قرارگیری موج در پشت متن */
+}
+
+/* موج قرمز - یک نوار نیمه‌شفاف که از راست به چپ حرکت می‌کند */
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 100%; /* ابتدا کاملاً خارج از دکمه در سمت راست */
+  width: 60%;
+  background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.5), transparent);
+  transform: skewX(-20deg); /* شکل مورب شبیه موج */
+  pointer-events: none;
+  z-index: -1; /* پشت متن دکمه */
+  transition: none; /* انیمیشن با keyframe کنترل می‌شود */
+}
+
+/* با هاور، انیمیشن حرکت موج از راست به چپ اجرا می‌شود */
+button:hover::before {
+  animation: waveSweep 0.8s ease;
+}
+
+@keyframes waveSweep {
+  0% {
+    right: 100%; /* شروع از راست (خارج از دکمه) */
+  }
+  100% {
+    right: -60%; /* پایان در چپ (کاملاً خارج از دکمه) */
+  }
+}
+
+/* افکت‌های اضافی دکمه (بزرگ‌شدن و سایه) */
+button:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 22px 35px -10px #0a1a2a;
+}
+
+button:active {
+  transform: translateY(-2px) scale(0.98);
+  box-shadow: 0 8px 15px -5px #0a1a2a;
+}
+
+/* ===== انیمیشن‌های کلی ===== */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== ریسپانسیو برای موبایل ===== */
+@media (max-width: 480px) {
+  body {
+    padding: 0.8rem;
+  }
+
+  h2 {
+    font-size: 1.9rem;
+  }
+
+  form {
+    padding: 1.8rem 1.2rem;
+  }
+
+  input,
+  textarea {
+    padding: 0.8rem 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  button {
+    padding: 0.8rem 1.2rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* پشتیبانی از فونت وزیر در صورت نبود */
+@font-face {
+  font-family: 'Vazir';
+  src: local('Vazir'), local('Vazir-Regular'), url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
